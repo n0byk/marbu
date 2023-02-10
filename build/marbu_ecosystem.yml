@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  # marbu_backend:
+  #   build:
+  #     context: .
+  #     dockerfile: backendDockerFile.local
+  #   volumes:
+  #     - './src:/usr/src/app/src'
+  #   ports:
+  #     - 3001:3333
+  #   env_file:
+  #     - .env
+  #   environment:
+  #     - POSTGRES_HOST=marbu_postgres
+  #   networks:
+  #     - marbu_ecosystem
+  #   depends_on:
+  #     - marbu_postgres
+
+  marbu_postgres:
+    image: postgres:12.4-alpine 
+    ports:
+      - 5432:5432
+    logging:
+      driver: none
+    environment:
+      - POSTGRES_PASSWORD=marbu
+      - POSTGRES_USER=marbu
+      - POSTGRES_DB=marbu
+    networks:
+      - marbu_ecosystem
+
+  marbu_rabbitmq:
+     image: rabbitmq:3.10.13-management-alpine 
+     ports:
+         - 5672:5672
+         - 15672:15672
+     logging:
+       driver: none
+     environment:
+       - RABBITMQ_DEFAULT_USER=marbu
+       - RABBITMQ_DEFAULT_PASS=marbu
+     networks:
+         - marbu_ecosystem
+
+networks:
+  marbu_ecosystem:
+    name: marbu_ecosystem
+    driver: bridge
