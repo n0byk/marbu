@@ -3,8 +3,8 @@ package config
 type AppConfig struct {
 	API_SERVER_NAME string
 
-	PORT int
-	ENV  string
+	APP_PORT string
+	APP_ENV  string
 
 	POSTGRES_DB       string
 	POSTGRES_HOST     string
