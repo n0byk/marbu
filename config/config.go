@@ -10,7 +10,7 @@ import (
 
 var Env AppConfig
 
-func InitConfig() {
+func NewConfig() {
 	err := godotenv.Load()
 	handleError(err)
 
@@ -34,6 +34,5 @@ func InitConfig() {
 func handleError(err error) {
 	if err != nil {
 		log.Fatal(err)
-		os.Exit(1)
 	}
 }
