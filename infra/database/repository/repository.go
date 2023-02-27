@@ -3,27 +3,28 @@ package repository
 import "context"
 
 type Repository interface {
+	CheckConnection()
 	BlogRepository
 	ProfileRepository
 	FeedRepository
 }
 
 type BlogRepository interface {
-	List(ctx context.Context, id string) error
-	Create(ctx context.Context, id string) error
-	Get(ctx context.Context, id string) error
-	Update(ctx context.Context, id string) error
-	Delete(ctx context.Context, id string) error
+	BlogList(ctx context.Context, id string) error
+	BlogCreate(ctx context.Context, id string) error
+	BlogGet(ctx context.Context, id string) error
+	BlogUpdate(ctx context.Context, id string) error
+	BlogDelete(ctx context.Context, id string) error
 }
 
 type ProfileRepository interface {
-	List(ctx context.Context, id string) error
-	Create(ctx context.Context, id string) error
-	Get(ctx context.Context, id string) error
-	Update(ctx context.Context, id string) error
-	Delete(ctx context.Context, id string) error
+	ProfileList(ctx context.Context, id string) error
+	ProfileCreate(ctx context.Context, id string) error
+	ProfileGet(ctx context.Context, id string) error
+	ProfileUpdate(ctx context.Context, id string) error
+	ProfileDelete(ctx context.Context, id string) error
 }
 
 type FeedRepository interface {
-	List(ctx context.Context, id string) error
+	FeedList(ctx context.Context, id string) (string, error)
 }

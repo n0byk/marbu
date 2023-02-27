@@ -8,16 +8,18 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var Env AppConfig
+var Env AppEnv
+var App Service
 
 func NewConfig() {
+	log.Println("App config init.")
 	err := godotenv.Load()
 	handleError(err)
 
 	postgresPort, err := strconv.Atoi(os.Getenv("POSTGRES_PORT"))
 	handleError(err)
 
-	Env = AppConfig{
+	Env = AppEnv{
 		API_SERVER_NAME: os.Getenv("API_SERVER_NAME"),
 		APP_PORT:        os.Getenv("APP_PORT"),
 		APP_ENV:         os.Getenv("APP_ENV"),

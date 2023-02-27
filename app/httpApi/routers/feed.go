@@ -1,9 +1,11 @@
 package routers
 
 import (
+	"context"
 	"net/http"
 
 	"github.com/go-chi/chi/v5"
+	"github.com/n0byk/marbu/config"
 )
 
 type FeedResource struct{}
@@ -19,5 +21,7 @@ func (rs FeedResource) Routes() chi.Router {
 }
 
 func (rs FeedResource) List(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("blog list of stuff.."))
+	ctx := context.Background()
+	message, _ := config.App.Storage.FeedList(ctx, "as")
+	w.Write([]byte(message))
 }

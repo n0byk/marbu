@@ -31,18 +31,18 @@ services:
     networks:
       - marbu_ecosystem
 
-  marbu_rabbitmq:
-     image: rabbitmq:3.10.13-management-alpine 
-     ports:
-         - 5672:5672
-         - 15672:15672
-     logging:
-       driver: none
-     environment:
-       - RABBITMQ_DEFAULT_USER=marbu
-       - RABBITMQ_DEFAULT_PASS=marbu
-     networks:
-         - marbu_ecosystem
+  # marbu_rabbitmq:
+  #    image: rabbitmq:3.10.13-management-alpine 
+  #    ports:
+  #        - 5672:5672
+  #        - 15672:15672
+  #    logging:
+  #      driver: none
+  #    environment:
+  #      - RABBITMQ_DEFAULT_USER=marbu
+  #      - RABBITMQ_DEFAULT_PASS=marbu
+  #    networks:
+  #        - marbu_ecosystem
 
 networks:
   marbu_ecosystem:

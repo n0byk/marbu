@@ -1,6 +1,8 @@
 package config
 
-type AppConfig struct {
+import "github.com/n0byk/marbu/infra/database/repository"
+
+type AppEnv struct {
 	API_SERVER_NAME string
 
 	APP_PORT string
@@ -13,4 +15,8 @@ type AppConfig struct {
 	POSTGRES_PASSWORD string
 
 	// DB              string `env:"DATABASE_DSN" envDefault:"postgres://developer:developer@localhost:5432/app?sslmode=disable"`
+}
+
+type Service struct {
+	Storage repository.Repository
 }
