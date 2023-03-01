@@ -7,7 +7,7 @@ up: ## start project
 	docker-compose -f ./build/marbu_ecosystem.yml up --build
 
 up_infra: ## up_infra
-	docker-compose  -f ./build/marbu_ecosystem.yml up marbu_postgres marbu_rabbitmq
+	docker-compose  -f ./build/marbu_ecosystem.yml up marbu_postgres
 
 down: ##  down project
 	docker-compose -f ./build/marbu_ecosystem.yml down

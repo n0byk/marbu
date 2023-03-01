@@ -11,7 +11,7 @@ import (
 var Env AppEnv
 var App Service
 
-func NewConfig() {
+func New() {
 	log.Println("App config init.")
 	err := godotenv.Load()
 	handleError(err)

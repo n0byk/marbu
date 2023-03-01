@@ -7,10 +7,12 @@ import (
 )
 
 func init() {
-	config.NewConfig()
-	database.NewStorage()
+	config.New()
+	database.New()
 }
 
 func main() {
-	httpApi.NewHttpApi()
+	httpApi.New()
+
+	defer config.App.Storage.CloseConnection()
 }

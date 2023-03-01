@@ -3,10 +3,15 @@ package repository
 import "context"
 
 type Repository interface {
-	CheckConnection()
+	ServiceRepository
 	BlogRepository
 	ProfileRepository
 	FeedRepository
+}
+
+type ServiceRepository interface {
+	CheckConnection()
+	CloseConnection()
 }
 
 type BlogRepository interface {

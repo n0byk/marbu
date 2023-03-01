@@ -3,6 +3,7 @@ package httpApi
 import (
 	"log"
 	"net/http"
+	"time"
 
 	"github.com/go-chi/chi/v5"
 	"github.com/go-chi/chi/v5/middleware"
@@ -10,11 +11,12 @@ import (
 	"github.com/n0byk/marbu/config"
 )
 
-func NewHttpApi() {
+func New() {
 	r := chi.NewRouter()
 
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
+	r.Use(middleware.Timeout(30 * time.Second))
 
 	mountRoutes(r)
 	log.Println("Http api init.")
